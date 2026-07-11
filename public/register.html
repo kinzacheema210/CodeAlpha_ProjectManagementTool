@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Register - CodeAlpha PM Tool</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="logo"><a href="/dashboard.html" style="color:#fff;text-decoration:none">📋 CodeAlpha PM Tool</a></div>
+  <nav id="nav-auth"></nav>
+</header>
+<main>
+  <div class="auth-box">
+    <h2>Create an Account</h2>
+    <form id="registerForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required minlength="6">
+      <button type="submit">Register</button>
+      <p id="msg"></p>
+    </form>
+    <p>Already have an account? <a href="/login.html">Login</a></p>
+  </div>
+</main>
+<script src="/js/nav.js"></script>
+<script>
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const msg = document.getElementById('msg');
+  const res = await fetch('/api/auth/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, password })
+  });
+  if (res.ok) {
+    window.location.href = '/dashboard.html';
+  } else {
+    const data = await res.json();
+    msg.className = 'error';
+    msg.textContent = data.error;
+  }
+});
+</script>
+</body>
+</html>

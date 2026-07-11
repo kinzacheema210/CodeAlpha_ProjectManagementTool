@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Projects - CodeAlpha PM Tool</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="logo">📋 CodeAlpha PM Tool</div>
+  <nav id="nav-auth"></nav>
+</header>
+<main>
+  <div class="card">
+    <h2>Create a New Project</h2>
+    <form id="createForm">
+      <input type="text" id="pName" placeholder="Project name" required>
+      <textarea id="pDesc" placeholder="Description (optional)" rows="2"></textarea>
+      <button type="submit">Create Project</button>
+      <p id="createMsg"></p>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>My Projects</h2>
+    <div id="projectList">Loading...</div>
+  </div>
+</main>
+<script src="/js/nav.js"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>
